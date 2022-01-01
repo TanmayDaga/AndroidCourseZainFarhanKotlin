@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">About Me</string>
+    <string name="name">Tanmay</string>
+    <string name="avatar">Avatar</string>
+    <string name="yellow_star">YellowStar</string>
+    <string name="bio">Contrary to popular belief,
+        Lorem Ipsum is not simply random te\nxt.It has roots
+        in a piece of classica
+        There are many variations of passages o
+        f Lorem Ipsum available, but the majority have suffered alteration in some f\norm, by injected
+        humour, or randomised words which don\'t look even slightly believable. If\n
+        you are going to use a passage of Lorem Ipsum, you need to be sure there isn\n
+        t anything embarrassing hidden in the middle of text. All the Lorem Ipsum gene\nrators on the
+        Internet tend to repeat predefined chunks as necessary, making this the first tr\nue generator
+        on the Internet. It uses a dictionary of over 200 Latin words, combined with a han\ndful of model
+        sentence structures, to generate Lorem Ipsum which looks reasonable. The generated L\norem Ipsum is therefore
+        always free from repetition, injected humour, or non-characteristic words etc.
+        l Latin literat \n ure from 45 BC,
+        making it over 2000 years old. Richard McClintock,
+        "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</string>
+
+    <string name="what_is_yout_name">What is your name</string>
+    <string name="Done_button">Done</string>
+</resources>
