@@ -14,7 +14,7 @@ import com.example.aboutme.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
 
-    private lateinit var mBinding: ActivityMainBinding
+    private lateinit var mBinding:ActivityMainBinding
     private var myName:MyName = MyName("Tanmay")
 
 

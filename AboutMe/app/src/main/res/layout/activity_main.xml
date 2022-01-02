@@ -44,9 +44,7 @@
             style="@style/NameStyle"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-
             android:hint="@string/what_is_yout_name"
-
             android:inputType="textPersonName" />
 
         <TextView
