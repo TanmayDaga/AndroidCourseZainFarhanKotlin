@@ -113,10 +113,11 @@ class GameFragment : Fragment() {
                     } else {
 
                         view.findNavController()
-                            .navigate(R.id.action_gameFragment_to_gameWonFragment)
+                            .navigate(GameFragmentDirections.actionGameFragmentToGameWonFragment(numQuestions,questionIndex))
                     }
                 } else {
-                    view.findNavController().navigate(R.id.action_gameFragment_to_gameOverFragment2)
+                    view.findNavController()
+                        .navigate(GameFragmentDirections.actionGameFragmentToGameOverFragment2())
                 }
             }
         }
