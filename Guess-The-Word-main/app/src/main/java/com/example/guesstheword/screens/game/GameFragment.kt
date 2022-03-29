@@ -1,14 +1,14 @@
 package com.example.guesstheword.screens.game
 
 import android.os.Bundle
+import android.text.format.DateUtils
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import com.example.guesstheword.R
 import com.example.guesstheword.databinding.FragmentGameBinding
@@ -26,7 +26,7 @@ class GameFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate view and obtain an instance of the binding class
         binding = DataBindingUtil.inflate(
             inflater,
@@ -36,43 +36,37 @@ class GameFragment : Fragment() {
         )
 
         viewModel = ViewModelProvider(this).get(GameViewModel::class.java)
+        binding.gameViewModel = viewModel
+
+        binding.setLifecycleOwner(this)
 
 
-        binding.correctButton.setOnClickListener {
-            viewModel.onCorrect()
+
+
+        viewModel.currentTime.observe(this.viewLifecycleOwner) { newTime ->
+            binding.timerText.text = DateUtils.formatElapsedTime(newTime)
 
         }
-        binding.skipButton.setOnClickListener {
-            viewModel.onSkip()
+
+
+        viewModel.eventGameFinish.observe(this.viewLifecycleOwner) { isFinish ->
+            if (isFinish) {
+                viewModel.onGameFinishComplete()
+                val currScore = viewModel.score.value ?: 0
+                val action = GameFragmentDirections.actionGameToScore(
+                    currScore
+                )
+
+                findNavController(this).navigate(action)
+
+            }
         }
 
-        viewModel.score.observe(this.viewLifecycleOwner, Observer {
-            binding.scoreText.text = it.toString()
-        })
-
-
-        updateWordText()
         return binding.root
     }
 
 
-    /**
-     * Called when the game is finished
-     */
-    private fun gameFinished() {
-        val currScore = viewModel.score.value ?: 0
-        val action = GameFragmentDirections.actionGameToScore(currScore)
-
-        findNavController(this).navigate(action)
-    }
-
-
     /** Methods for updating the UI **/
-
-    private fun updateWordText() {
-        binding.wordText.text = viewModel.word
-
-    }
 
 
 }
